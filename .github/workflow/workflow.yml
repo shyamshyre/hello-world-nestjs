@@ -1,0 +1,17 @@
+name: NestJS Deployment Pipeline.
+on: push
+    - main 
+    - master
+jobs:
+  build:
+    strategy:
+     matrix: 
+      node-version: []
+  runs-on: selfhosted
+  steps:
+  - name: Code checkout
+    uses: actions/checkout@v3
+  - name: Install Node
+    uses : actions/setup-node@v3
+    with : 
+      node-version: ${{matrix.node-version}}      
